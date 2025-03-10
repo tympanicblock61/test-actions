@@ -24,7 +24,12 @@ jobs:
         pip install requests  # Install requests library
 
     - name: Download Itch.io Files
-      run: |
-        python download.py
+    - uses: jannekem/run-python-script-action@v1
+      with:
+        script: |
+          import os
+          print("Directory contents:")
+          for f in os.listdir():
+              print(f)
       env:
         ITCH_API_KEY: ${{ secrets.ITCH_API_KEY }}
