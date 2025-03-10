@@ -32,6 +32,7 @@ jobs:
           
           # Get the GitHub Secrets (for security)
           key = os.getenv("ITCH_API_KEY")
+          print("key: "+key);
           
           headers = {"Authorization": key}
           
