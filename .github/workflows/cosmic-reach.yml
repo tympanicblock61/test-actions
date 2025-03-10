@@ -25,10 +25,12 @@ jobs:
 
     - name: Download Itch.io Files
       run: |
+        python - <<EOF
         import os
-        print("API Key:", os.getenv("ITCH_API_KEY"))  # Check if the API key is passed correctly
+        print("API Key:", os.getenv("ITCH_API_KEY"))  # Debugging line
         print("Directory contents:")
         for f in os.listdir():
             print(f)
+        EOF
       env:
         ITCH_API_KEY: ${{ secrets.ITCH_API_KEY }}  # Pass the secret API key securely
