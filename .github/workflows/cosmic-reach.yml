@@ -8,6 +8,7 @@ on:
 jobs:
   download_files:
     runs-on: ubuntu-latest
+    environment: itch_io
 
     env:
       ITCH_API_KEY: ${{ secrets.ITCH_API_KEY }}  # Pass the secret API key securely
