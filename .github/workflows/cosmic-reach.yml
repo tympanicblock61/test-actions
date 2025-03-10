@@ -21,6 +21,12 @@ jobs:
       with:
         python-version: '3.8'
 
+    - name: Echo the ITCH_API_KEY environment variable
+      run: |
+        echo "ITCH_API_KEY is: $ITCH_API_KEY"  # This will print the value of the secret in the logs
+      env:
+        ITCH_API_KEY: ${{ secrets.ITCH_API_KEY }}  # Pass the secret API key securely
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
