@@ -1,27 +1,23 @@
-name: Download Itch.io Files
-
-on:
-  schedule:
-    - cron: '0 5 * * *'  # 12 AM EST (5 AM UTC)
-  workflow_dispatch:  # Allows manual triggering
-
 jobs:
   download_files:
-    runs-on: ubuntu-latest  # Runner type
+    runs-on: ubuntu-latest
+
+    env:
+      ITCH_API_KEY: ${{ secrets.ITCH_API_KEY }}  # Pass the secret API key securely
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2  # Checkout the repository
+      uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'  # Specify Python version
+        python-version: '3.8'
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install requests  # Install requests library
+        pip install requests
 
     - name: Download Itch.io Files
       run: |
@@ -32,5 +28,3 @@ jobs:
         for f in os.listdir():
             print(f)
         EOF
-      env:
-        ITCH_API_KEY: ${{ secrets.ITCH_API_KEY }}  # Pass the secret API key securely
