@@ -28,6 +28,7 @@ jobs:
 
     - name: Download Itch.io Files
       run: |
+        echo env
         python - <<EOF
         import os
         print("API Key:", os.getenv("ITCH_API_KEY"))  # Debugging line
