@@ -25,6 +25,6 @@ jobs:
 
     - name: Download Itch.io Files
       run: |
-        python ./download.py
+        python download.py
       env:
         ITCH_API_KEY: ${{ secrets.ITCH_API_KEY }}
